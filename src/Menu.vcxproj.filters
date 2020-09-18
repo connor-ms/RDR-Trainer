@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="include">
+      <UniqueIdentifier>{99bf53d6-378f-413e-b921-40ff6f9d3da1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{053dd82d-826d-458a-997e-921c5a8208b1}</UniqueIdentifier>
+      <Extensions>
+      </Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{56e85d47-cf3e-47cd-9b83-952caed44f1c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{40e788e5-9ec8-4d99-913f-3f3eb11dba9b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\mods">
+      <UniqueIdentifier>{39485b75-34a8-43f9-bb94-22b872d7b48b}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="util.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="menu_backend.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="menu.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="mods\mods.h">
+      <Filter>include</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="util.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="menu_backend.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="menu.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="notes.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="mods\animals.c">
+      <Filter>Source Files\mods</Filter>
+    </ClCompile>
+    <ClCompile Include="mods\mods.c">
+      <Filter>Source Files\mods</Filter>
+    </ClCompile>
+    <ClCompile Include="mods\net.c">
+      <Filter>Source Files\mods</Filter>
+    </ClCompile>
+    <ClCompile Include="mods\scriptloader.c">
+      <Filter>Source Files\mods</Filter>
+    </ClCompile>
+    <ClCompile Include="mods\self.c">
+      <Filter>Source Files\mods</Filter>
+    </ClCompile>
+    <ClCompile Include="mods\teleport.c">
+      <Filter>Source Files\mods</Filter>
+    </ClCompile>
+    <ClCompile Include="mods\vehicles.c">
+      <Filter>Source Files\mods</Filter>
+    </ClCompile>
+    <ClCompile Include="mods\weapon.c">
+      <Filter>Source Files\mods</Filter>
+    </ClCompile>
+    <ClCompile Include="mods\world.c">
+      <Filter>Source Files\mods</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="main.c">
+      <Filter>Source Files</Filter>
+    </CustomBuild>
+  </ItemGroup>
+</Project>
