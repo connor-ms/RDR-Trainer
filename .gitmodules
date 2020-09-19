@@ -1,0 +1,3 @@
+[submodule "lib/SC-CL"]
+	path = lib/SC-CL
+	url = https://github.com/NativeFunction/SC-CL
