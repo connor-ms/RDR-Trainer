@@ -1,46 +1,46 @@
 /*H**********************************************************************
-* FILENAME :	types.h					START DATE :	10 Sept 16
+* FILENAME :    types.h                    START DATE :    10 Sept 16
 *
 * DESCRIPTION :
-*		Types to be used with all targets and platforms of SC-CL.
+*        Types to be used with all targets and platforms of SC-CL.
 *
 * NOTES :
-*		This file is part of SC-CL's include library.
+*        This file is part of SC-CL's include library.
 *
 * LICENSE :
 *
-*		Copyright 2016 SC-CL
+*        Copyright 2016 SC-CL
 *
-*		Redistribution and use in source and binary forms, with or without
-*		modification, are permitted provided that the following conditions are met:
+*        Redistribution and use in source and binary forms, with or without
+*        modification, are permitted provided that the following conditions are met:
 *
-*		* Redistributions of source code must retain the above copyright
-*		notice, this list of conditions and the following disclaimer.
+*        * Redistributions of source code must retain the above copyright
+*        notice, this list of conditions and the following disclaimer.
 *
-*		* Redistributions in binary form must reproduce the above copyright
-*		notice, this list of conditions and the following disclaimer in the
-*		documentation and/or other materials provided with the distribution.
+*        * Redistributions in binary form must reproduce the above copyright
+*        notice, this list of conditions and the following disclaimer in the
+*        documentation and/or other materials provided with the distribution.
 *
-*		* Neither SC-CL nor its contributors may be used to endorse or promote products
-*		derived from this software without specific prior written permission.
+*        * Neither SC-CL nor its contributors may be used to endorse or promote products
+*        derived from this software without specific prior written permission.
 *
-*		* Redistribution of this software in source or binary forms shall be free
-*		of all charges or fees to the recipient of this software.
+*        * Redistribution of this software in source or binary forms shall be free
+*        of all charges or fees to the recipient of this software.
 *
-*		THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
-*		ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
-*		WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
-*		DISCLAIMED. IN NO EVENT SHALL SC-CL BE LIABLE FOR ANY
-*		DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
-*		(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
-*		LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
-*		ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
-*		(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
-*		SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+*        THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
+*        ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+*        WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+*        DISCLAIMED. IN NO EVENT SHALL SC-CL BE LIABLE FOR ANY
+*        DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
+*        (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+*        LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
+*        ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+*        (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+*        SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 *
 * AUTHORS :
-*		Rocko Tompkins
-*		Nathan James
+*        Rocko Tompkins
+*        Nathan James
 *H*/
 #pragma once
 
@@ -111,128 +111,128 @@ typedef float Time;
 
 typedef struct NetworkHandle
 {
-	int data[13];
+    int data[13];
 } NetworkHandle;
 
 typedef union vector2
 {
-	struct { float x, y; };
-	struct { float width, height; };
-	struct { float w, h; };
-	float v[2];
+    struct { float x, y; };
+    struct { float width, height; };
+    struct { float w, h; };
+    float v[2];
 } Point, Size, vector2;
 
 //GTA Coord Type = Y Depth
 //RDR Coord Type = Z Depth
 typedef union vector3
 {
-	struct { float x, y, z; };
-	float v[3];
+    struct { float x, y, z; };
+    float v[3];
 } vector3;
 
 typedef union quaternion
 {
-	struct { float x, y, z, w; };
-	float v[4];
+    struct { float x, y, z, w; };
+    float v[4];
 } quaternion;
 
 //Color struct where values range from 0 - 255
 typedef union RGBA
 {
-	struct
-	{
-		union{int red; int r;};
-		union{int green; int g;};
-		union{int blue; int b;};
-		union{int opacity; int alpha; int a;};
-	};
-	int col[4];
+    struct
+    {
+        union{int red; int r;};
+        union{int green; int g;};
+        union{int blue; int b;};
+        union{int opacity; int alpha; int a;};
+    };
+    int col[4];
 } RGBA;
 
 //Color struct where values range from 0 - 255
 typedef union RGB
 {
-	struct
-	{
-		union{int red; int r;};
-		union{int green; int g;};
-		union{int blue; int b;};
-	};
-	int col[3];
+    struct
+    {
+        union{int red; int r;};
+        union{int green; int g;};
+        union{int blue; int b;};
+    };
+    int col[3];
 } RGB;
 
 //Color struct where values range from 0.0 - 1.0
 typedef union FloatRGBA
 {
-	struct
-	{
-		union{float red; float r;};
-		union{float green; float g;};
-		union{float blue; float b;};
-		union{float opacity; float alpha; float a;};
-	};
-	float col[4];
+    struct
+    {
+        union{float red; float r;};
+        union{float green; float g;};
+        union{float blue; float b;};
+        union{float opacity; float alpha; float a;};
+    };
+    float col[4];
 } FloatRGBA;
 
 //Color struct where values range from 0.0 - 1.0
 typedef union FloatRGB
 {
-	struct
-	{
-		union{float red; float r;};
-		union{float green; float g;};
-		union{float blue; float b;};
-	};
-	float col[3];
+    struct
+    {
+        union{float red; float r;};
+        union{float green; float g;};
+        union{float blue; float b;};
+    };
+    float col[3];
 } FloatRGB;
 
 typedef union flint
 {
-	int Int;
-	float Float;
+    int Int;
+    float Float;
 } flint;
 
 typedef union any
 {
-	int Int;
-	float Float;
-	bool Bool;
-	char* CharP;
-	byte* ByteP;
-	int* IntP;
-	float* FloatP;
-	short* ShortP;
-	vector3* Vector3P;
-	quaternion* QuaternionP;
-	byte ByteArray[4];
-	char CharArray[4];
-	short ShortArray[2];
+    int Int;
+    float Float;
+    bool Bool;
+    char* CharP;
+    byte* ByteP;
+    int* IntP;
+    float* FloatP;
+    short* ShortP;
+    vector3* Vector3P;
+    quaternion* QuaternionP;
+    byte ByteArray[4];
+    char CharArray[4];
+    short ShortArray[2];
 } any;
 
 typedef enum DataType
 {
-	DT_None,
-	DT_UInt,
-	DT_UIntP,
-	DT_Int,
-	DT_IntP,
-	DT_Float,
-	DT_FloatP,
-	DT_Bool,
-	DT_BoolP,
-	DT_Char,
-	DT_CharP,
-	DT_Short,
-	DT_ShortP,
-	DT_UShort,
-	DT_UShortP,
-	DT_Vector3,
-	DT_Vector3P,
-	DT_Vector2,
-	DT_Vector2P,
-	DT_Quaternion,
-	DT_QuaternionP,
-	DT_FunctionP
+    DT_None,
+    DT_UInt,
+    DT_UIntP,
+    DT_Int,
+    DT_IntP,
+    DT_Float,
+    DT_FloatP,
+    DT_Bool,
+    DT_BoolP,
+    DT_Char,
+    DT_CharP,
+    DT_Short,
+    DT_ShortP,
+    DT_UShort,
+    DT_UShortP,
+    DT_Vector3,
+    DT_Vector3P,
+    DT_Vector2,
+    DT_Vector2P,
+    DT_Quaternion,
+    DT_QuaternionP,
+    DT_FunctionP
 } DataType;
 
 //poor mans constructors

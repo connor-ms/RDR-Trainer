@@ -1,46 +1,46 @@
 /*H**********************************************************************
-* FILENAME :	intrinsics.h					START DATE :	10 Sept 16
+* FILENAME :    intrinsics.h                    START DATE :    10 Sept 16
 *
 * DESCRIPTION :
-*		Intrinsic functions to be used with all targets and platforms of SC-CL.
+*        Intrinsic functions to be used with all targets and platforms of SC-CL.
 *
 * NOTES :
-*		This file is part of SC-CL's include library.
+*        This file is part of SC-CL's include library.
 *
 * LICENSE :
 *
-*		Copyright 2016 SC-CL
+*        Copyright 2016 SC-CL
 *
-*		Redistribution and use in source and binary forms, with or without
-*		modification, are permitted provided that the following conditions are met:
+*        Redistribution and use in source and binary forms, with or without
+*        modification, are permitted provided that the following conditions are met:
 *
-*		* Redistributions of source code must retain the above copyright
-*		notice, this list of conditions and the following disclaimer.
+*        * Redistributions of source code must retain the above copyright
+*        notice, this list of conditions and the following disclaimer.
 *
-*		* Redistributions in binary form must reproduce the above copyright
-*		notice, this list of conditions and the following disclaimer in the
-*		documentation and/or other materials provided with the distribution.
+*        * Redistributions in binary form must reproduce the above copyright
+*        notice, this list of conditions and the following disclaimer in the
+*        documentation and/or other materials provided with the distribution.
 *
-*		* Neither SC-CL nor its contributors may be used to endorse or promote products
-*		derived from this software without specific prior written permission.
+*        * Neither SC-CL nor its contributors may be used to endorse or promote products
+*        derived from this software without specific prior written permission.
 *
-*		* Redistribution of this software in source or binary forms shall be free
-*		of all charges or fees to the recipient of this software.
+*        * Redistribution of this software in source or binary forms shall be free
+*        of all charges or fees to the recipient of this software.
 *
-*		THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
-*		ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
-*		WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
-*		DISCLAIMED. IN NO EVENT SHALL SC-CL BE LIABLE FOR ANY
-*		DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
-*		(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
-*		LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
-*		ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
-*		(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
-*		SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+*        THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
+*        ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+*        WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+*        DISCLAIMED. IN NO EVENT SHALL SC-CL BE LIABLE FOR ANY
+*        DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
+*        (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+*        LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
+*        ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+*        (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+*        SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 *
 * AUTHORS :
-*		Rocko Tompkins
-*		Nathan James
+*        Rocko Tompkins
+*        Nathan James
 *H*/
 #pragma once
 #include "types.h"
@@ -401,8 +401,8 @@ extern __intrinsic int getHiDWord(void* addr);
 
 #pragma region Custom_ASM //{
 /*************************************************************************
-*	These perform the operation on the item(or vector) on top of the stack
-*	This can lead to dangerous behaviour if you aren't sure what is currently on the stack
+*    These perform the operation on the item(or vector) on top of the stack
+*    This can lead to dangerous behaviour if you aren't sure what is currently on the stack
 *************************************************************************/
 
 /// <summary>Pops multiple items off the stack.</summary>
@@ -462,13 +462,13 @@ extern __unsafeIntrinsic void __ptrFromStack(const void* address, int count);
 
 #pragma region ASM //{
 /*************************************************************************
-*	These perform an operation on the item(or vector) on top of the stack
-*	This can lead to dangerous behaviour if you aren't sure what is currently on the stack
+*    These perform an operation on the item(or vector) on top of the stack
+*    This can lead to dangerous behaviour if you aren't sure what is currently on the stack
 *************************************************************************/
 
 /// <summary>
-///		Adds specified amount of nops to the script in the interval [0,4096].
-///		<para>Note: GTAIV nops exit the script.</para>
+///        Adds specified amount of nops to the script in the interval [0,4096].
+///        <para>Note: GTAIV nops exit the script.</para>
 /// </summary>
 /// <param name="count">The amount of nops to add.<para>This value must be an integer literal.</para></param>
 /// <returns></returns>
@@ -1024,8 +1024,8 @@ extern __unsafeIntrinsic void __pCall();
 #define CreateSizedArray(type, name, sizein, ...)\
 struct SizedArray\
 {\
-	unsigned int size;\
-	type items[sizein];\
+    unsigned int size;\
+    type items[sizein];\
 } name = {.size = sizein, .items = {__VA_ARGS__}}
 
 /// <summary>Gets the size of the sized array.</summary>
@@ -1043,12 +1043,12 @@ struct SizedArray\
 /// <param name="sizedarr">The pointer to the sized array.</param>
 #define ArrayToSizedArray(arr, sizedarr)\
 if(sizeof(arr) == sizeof(sizedarr.items))\
-	memcpy(sizedarr.items, arr, countof(arr));
+    memcpy(sizedarr.items, arr, countof(arr));
 
 /// <summary>Converts an sized array to a array.</summary>
 /// <param name="sizedarr">The pointer to the sized array.</param>
 /// <param name="arr">The pointer to the array.</param>
 #define SizedArrayToArray(sizedarr, arr)\
 if(sizeof(arr) == sizeof(sizedarr.items))\
-	memcpy(arr, sizedarr.items, countof(sizedarr.items));
+    memcpy(arr, sizedarr.items, countof(sizedarr.items));
 
