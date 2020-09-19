@@ -1,6 +1,7 @@
-#include "menu_backend.h"
 #include "mods.h"
-#include "util.h"
+
+#include "../menu_backend.h"
+#include "../util.h"
 
 char *net_player_names[17];
 int   net_selected_player = 1;

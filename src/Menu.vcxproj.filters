@@ -18,6 +18,12 @@
     <Filter Include="Source Files\mods">
       <UniqueIdentifier>{39485b75-34a8-43f9-bb94-22b872d7b48b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="include\SC-CL">
+      <UniqueIdentifier>{456602c3-bb45-4bdb-a056-50ce76fe2906}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\SC-CL\RDR">
+      <UniqueIdentifier>{96d64924-cb91-4af9-b6b7-2560133ae9e6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="util.h">
@@ -31,6 +37,30 @@
     </ClInclude>
     <ClInclude Include="mods\mods.h">
       <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\common.h">
+      <Filter>include\SC-CL</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\constants.h">
+      <Filter>include\SC-CL</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\intrinsics.h">
+      <Filter>include\SC-CL</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\natives.h">
+      <Filter>include\SC-CL</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\types.h">
+      <Filter>include\SC-CL</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\varargs.h">
+      <Filter>include\SC-CL</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\RDR\consts32.h">
+      <Filter>include\SC-CL\RDR</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\RDR\natives32.h">
+      <Filter>include\SC-CL\RDR</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -72,6 +102,9 @@
     </ClCompile>
     <ClCompile Include="mods\world.c">
       <Filter>Source Files\mods</Filter>
+    </ClCompile>
+    <ClCompile Include="..\include\common.c">
+      <Filter>include\SC-CL</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

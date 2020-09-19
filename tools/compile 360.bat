@@ -1,9 +1,18 @@
 @echo off
 cd %~dp0
-:start
-echo SC-CL menu.c
-echo Press ENTER to launch
+echo ===========================================
+echo.
+echo          Simple RDR Trainer (360)
+echo               Made by Connor
+echo.
+echo   https://github.com/connorms/RDR-Trainer
+echo.
+echo ===========================================
+echo.
+echo            Press any key to build
+echo.
+echo ===========================================
 pause > nul
 cls
-"../../bin/SC-CL.exe" -platform=X360 -target="RDR_#SC" -out-dir="D:/script dev/bin/" -vcx="Menu.vcxproj" -- -I "../../include/"
-goto start
+"../lib/SC-CL/bin/SC-CL.exe" -platform=X360 -target="RDR_#SC" -out-dir="../bin/" -vcx="../src/Menu.vcxproj" -name="menu" -- -I "../include/"
+pause

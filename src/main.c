@@ -7,7 +7,7 @@
 #include "common.h"
 
 #include "util.h"
-#include "mods.h"
+#include "mods/mods.h"
 #include "menu.h"
 
 void main()

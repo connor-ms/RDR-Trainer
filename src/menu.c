@@ -1,7 +1,7 @@
 #include "menu_backend.h"
 #include "menu.h"
 
-#include "mods.h"
+#include "mods/mods.h"
 
 #include "constants.h"
 #include "natives.h"

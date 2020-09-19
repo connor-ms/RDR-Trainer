@@ -1,6 +1,6 @@
 #include "mods.h"
 
-#include "util.h"
+#include "../util.h"
 
 bool self_invincible  = false;
 bool self_invisible   = false;
