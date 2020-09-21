@@ -134,7 +134,7 @@ bool AddBaseItem(char *str, void *func, void *backfunc, const char *msg, bool su
 
 void AddText(char *str)
 {
-
+    // todo
 }
 
 void AddItem(char *str, void *func, void *backfunc, const char *msg)
@@ -153,6 +153,17 @@ void AddBoolItem(char *str, void *func, void *backfunc, const char *msg, bool va
     {
         val ? stradd_s(menu_text, ": <green>On") : stradd_s(menu_text, ": <red>Off");
         stradd_s(menu_text, menu_col_unselected);
+    }
+}
+
+void AddSimpleBoolItem(char *str, void *backfunc, const char *msg, bool *val)
+{
+    if (AddBaseItem(str, nullptr, backfunc, msg, false))
+    {
+        *val ? stradd_s(menu_text, ": <green>On") : stradd_s(menu_text, ": <red>Off");
+        stradd_s(menu_text, menu_col_unselected);
+
+        *val = !(*val);
     }
 }
 

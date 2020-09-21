@@ -18,9 +18,10 @@ extern void (*DrawCurrentMenu)();
 void DrawMenu();
 
 void SetHeader(char *str);
-bool AddBaseItem(char *str, void *func, void *backfunc, const char *msg, bool submenu);
+
 void AddItem(char *str, void *func, void *backfunc, const char *msg);
 void AddSubmenu(char *str, void *func, void *backfunc);
 void AddBoolItem(char *str, void *func, void *backfunc, const char *msg, bool val);
+void AddSimpleBoolItem(char *str, void *backfunc, const char *msg, bool *toggle);
 void AddScrollableItem(char *str, char *scrollable[], void *func, void *backfunc, const char *msg, int *val);
 void AddScrollableIntItem(char *str, void *func, void *backfunc, const char *msg, int *index, int min, int max);

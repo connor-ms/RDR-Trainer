@@ -14,185 +14,168 @@ bool spectating = false;
 
 bool IsSlotValid(int slot)
 {
-	if (IS_SLOT_VALID(slot))
-	{
-		return true;
-	}
-	else
-	{
-		_PRINT_CHAT("<red>Error: invalid player", 0, 0, 0, 0, 0, 0);
-		print("<red>Error: invalid player", 2000);
+    if (IS_SLOT_VALID(slot))
+    {
+        return true;
+    }
+    else
+    {
+        _PRINT_CHAT("<red>Error: invalid player", 0, 0, 0, 0, 0, 0);
+        print("<red>Error: invalid player", 2000);
 
-		return false;
-	}
+        return false;
+    }
 }
 
 const char *GetSlotColor(int slot)
 {
-	char temp[23] = "MPPlayerNameColored_";
-	
-	straddi_s(temp, slot);
+    char temp[23] = "MPPlayerNameColored_";
+    
+    straddi_s(temp, slot);
 
-	return UI_GET_STRING(temp);
+    return UI_GET_STRING(temp);
 }
 
 void Net_FixServer()
 {
-	Iterator iterator = CREATE_OBJECT_ITERATOR(FIND_NAMED_LAYOUT("playerlayout"));
+    Iterator iterator = CREATE_OBJECT_ITERATOR(FIND_NAMED_LAYOUT("playerlayout"));
 
-	ITERATE_ON_OBJECT_TYPE(iterator, 15);
+    ITERATE_ON_OBJECT_TYPE(iterator, OBJECT_TYPE_Actor);
 
-	START_OBJECT_ITERATOR(iterator);
-	
-	int matches = GET_NUM_ITERATOR_MATCHES(iterator);
+    START_OBJECT_ITERATOR(iterator);
+    
+    int matches = GET_NUM_ITERATOR_MATCHES(iterator);
 
-	char temp[50];
+    char temp[50];
 
-	stradd_s(temp, "Found ");
-	straddi_s(temp, matches);
-	stradd_s(temp, " matches.\nDeleting...");
+    stradd_s(temp, "Found ");
+    straddi_s(temp, matches);
+    stradd_s(temp, " matches.\nDeleting...");
 
-	print(temp, 2000);
+    print(temp, 2000);
 
-	for (int i = 0; i < matches; i++)
-	{
-		int current = OBJECT_ITERATOR_CURRENT(iterator);
+    for (int i = 0; i < matches; i++)
+    {
+        int current = OBJECT_ITERATOR_CURRENT(iterator);
 
-		if (current != self)
-		{
-			DESTROY_ACTOR(current);
-		}
+        if (current != self)
+        {
+            DESTROY_ACTOR(current);
+        }
 
-		OBJECT_ITERATOR_NEXT(iterator);
-	}
+        OBJECT_ITERATOR_NEXT(iterator);
+    }
 
-	DESTROY_ITERATOR(iterator);
+    DESTROY_ITERATOR(iterator);
 
-	DESTROY_LAYOUT_OBJECTS(FIND_NAMED_LAYOUT("netlayout"));
-
-	WAIT(2000);
-	print("Deleted?", 2000);
+    DESTROY_LAYOUT_OBJECTS(FIND_NAMED_LAYOUT("netlayout"));
 }
 
 void Net_RefreshPlayerlist()
 {
-	for (int i = 0; i < 15; i++)
-	{
-		if (IS_SLOT_VALID(i))
-			net_player_names[i] = GET_SLOT_NAME(i);
-		else
-			net_player_names[i] = "invalid";
-	}
+    for (int i = 0; i < 15; i++)
+    {
+        if (IS_SLOT_VALID(i))
+            net_player_names[i] = (char*)GET_SLOT_NAME(i);
+        else
+            net_player_names[i] = "invalid";
+    }
 }
 
 void Net_TeleportToPlayer()
 {
-	if (!IsSlotValid(net_selected_player))
-		return;
+    if (!IsSlotValid(net_selected_player))
+        return;
 
-	vector3 pos;
-	GET_SLOT_POSITION(net_selected_player, &pos);
+    vector3 pos;
+    GET_SLOT_POSITION(net_selected_player, &pos);
 
-	TELEPORT_ACTOR(self, &pos, true, true, true);
+    TELEPORT_ACTOR(self, &pos, true, true, true);
 }
 
 void Net_TPToMe()
 {
-	if (!IsSlotValid(net_selected_player))
-		return;
+    if (!IsSlotValid(net_selected_player))
+        return;
 
-	Object player = GET_OBJECT_FROM_ACTOR(GET_SLOT_ACTOR(net_selected_player));
-	vector3 pos;
-	GET_POSITION(self, &pos);
+    Object player = GET_OBJECT_FROM_ACTOR(GET_SLOT_ACTOR(net_selected_player));
+    vector3 pos;
+    GET_POSITION(self, &pos);
 
-	NET_REQUEST_OBJECT(player);
+    NET_REQUEST_OBJECT(player);
 
-	SET_OBJECT_POSITION(player, pos);
+    SET_OBJECT_POSITION(player, pos);
 }
 
 void Net_ExplodePlayer()
 {
-	if (!IsSlotValid(net_selected_player))
-		return;
+    if (!IsSlotValid(net_selected_player))
+        return;
 
-	vector3 pos, damage;
-	GET_SLOT_POSITION(net_selected_player, &pos);
+    vector3 pos, damage;
+    GET_SLOT_POSITION(net_selected_player, &pos);
 
-	damage.x = 1.0f;
-	damage.y = 1.0f;
-	damage.z = 1.0f;
+    damage.x = 1.0f;
+    damage.y = 1.0f;
+    damage.z = 1.0f;
 
-	_CREATE_EXPLOSION(&pos, EXPLOSION_ExplosionLarge, true, &damage, true);
-
-	char temp[100];
-
-	stradd_s(temp, "x: ");
-	straddi_s(temp, pos.x);
-	stradd_s(temp, " y: ");
-	straddi_s(temp, pos.y);
-	stradd_s(temp, " z: ");
-	straddi_s(temp, pos.z);
-
-	print(temp, 2000);
+    _CREATE_EXPLOSION(&pos, EXPLOSION_ExplosionLarge, true, &damage, true);
 }
 
 void Net_SpectatePlayer()
 {
-	if (!IsSlotValid(net_selected_player))
-		return;
+    if (!IsSlotValid(net_selected_player))
+        return;
 
-	spectating = true;
+    spectating = true;
 
-	vector3 pos;
-	GET_SLOT_POSITION(net_selected_player, &pos);
+    vector3 pos;
+    GET_SLOT_POSITION(net_selected_player, &pos);
 
-	vector3 oldpos;
-	GET_POSITION(self, &oldpos);
+    vector3 oldpos;
+    GET_POSITION(self, &oldpos);
 
-	TELEPORT_ACTOR(self, &pos, 1, 1, 1);
+    TELEPORT_ACTOR(self, &pos, 1, 1, 1);
 
-	WAIT(500);
+    WAIT(500);
 
-//	STREAMING_LOAD_BOUNDS(pos.x, pos.y, pos.z, 10.0f, 0);
+//    STREAMING_LOAD_BOUNDS(pos.x, pos.y, pos.z, 10.0f, 0);
 
-	SET_CAMERA_FOLLOW_ACTOR(GET_SLOT_ACTOR(net_selected_player));
+    SET_CAMERA_FOLLOW_ACTOR(GET_SLOT_ACTOR(net_selected_player));
 
-	TELEPORT_ACTOR(self, &oldpos, 1, 1, 1);
-	//SET_PLAYER_CONTROL(0, 0, 1, 1);
+    TELEPORT_ACTOR(self, &oldpos, 1, 1, 1);
+    //SET_PLAYER_CONTROL(0, 0, 1, 1);
 }
 
 void Net_KillPlayersHorse()
 {
-	if (!IsSlotValid(net_selected_player))
-		return;
+    if (!IsSlotValid(net_selected_player))
+        return;
 
-	KILL_ACTOR(GET_ACTORS_HORSE(GET_SLOT_ACTOR(net_selected_player)));
+    KILL_ACTOR(GET_ACTORS_HORSE(GET_SLOT_ACTOR(net_selected_player))); // doesn't work
 }
 
 void Net_Loop()
 {
-	if (spectating)
-	{
-		char msg[255];
+    if (spectating)
+    {
+        char msg[255];
 
-		stradd_s(msg, "Spectating ");
-		stradd_s(msg, GetSlotColor(net_selected_player));
+        stradd_s(msg, "Spectating ");
+        stradd_s(msg, GetSlotColor(net_selected_player));
+        stradd_s(msg, "</0x> \nPress <cancel> to stop spectating.");
 
-		stradd_s(msg, "</0x> \nPress <cancel> to stop spectating. -- ");
+        print(msg, 200);
 
-		straddi_s(msg, STREAMING_IS_WORLD_LOADED());
-
-		print(msg, 200);
-
-		if (IsButtonPressed(BUTTON_B))
-		{
-			SET_CAMERA_FOLLOW_ACTOR(self);
-			spectating = false;
-		}
-	}
+        if (IsButtonPressed(BUTTON_B))
+        {
+            SET_CAMERA_FOLLOW_ACTOR(self);
+            spectating = false;
+        }
+    }
 }
 
 void Net_SpoofLevel()
 {
-	UNK_0x50C18480("Rank", (net_spoof_prestige * 50) + net_spoof_level);
+    UNK_0x50C18480("Rank", (net_spoof_prestige * 50) + net_spoof_level);
 }

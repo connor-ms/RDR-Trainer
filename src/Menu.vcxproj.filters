@@ -24,6 +24,12 @@
     <Filter Include="include\SC-CL\RDR">
       <UniqueIdentifier>{96d64924-cb91-4af9-b6b7-2560133ae9e6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\SC-CL">
+      <UniqueIdentifier>{3be1bf3f-d698-45da-b2e9-3c0042ba89ab}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\mods">
+      <UniqueIdentifier>{c3125bec-6181-4f66-bcef-b49b68bc59b2}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="util.h">
@@ -33,9 +39,6 @@
       <Filter>include</Filter>
     </ClInclude>
     <ClInclude Include="menu.h">
-      <Filter>include</Filter>
-    </ClInclude>
-    <ClInclude Include="mods\mods.h">
       <Filter>include</Filter>
     </ClInclude>
     <ClInclude Include="..\include\common.h">
@@ -61,6 +64,9 @@
     </ClInclude>
     <ClInclude Include="..\include\RDR\natives32.h">
       <Filter>include\SC-CL\RDR</Filter>
+    </ClInclude>
+    <ClInclude Include="mods\mods.h">
+      <Filter>include\mods</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -103,8 +109,11 @@
     <ClCompile Include="mods\world.c">
       <Filter>Source Files\mods</Filter>
     </ClCompile>
+    <ClCompile Include="mods\test.c">
+      <Filter>Source Files\mods</Filter>
+    </ClCompile>
     <ClCompile Include="..\include\common.c">
-      <Filter>include\SC-CL</Filter>
+      <Filter>Source Files\SC-CL</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

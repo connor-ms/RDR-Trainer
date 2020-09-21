@@ -14,8 +14,6 @@ void main()
 {
     LAUNCH_NEW_SCRIPT("scripting/DesignerDefined/UI/FuiEventMonitor_o", 1);
 
-    //REQUEST_ASSET("ui/pausemenu/lobby/menu.sc", ASSET_TYPE_ActorType);
-
     while (HUD_IS_FADED())
     {
         if (IsButtonDown(BUTTON_B))

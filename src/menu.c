@@ -302,7 +302,7 @@ void Network_LevelSpoofer()
     AddScrollableIntItem("Prestige", nullptr, Main_Network, "", &net_spoof_prestige, 0, 4);
     AddScrollableIntItem("Level",    nullptr, Main_Network, "", &net_spoof_level,    1, 50);
 
-    AddItem("Apply", Net_SpoofLevel, Main_Network, "");
+    AddItem("Apply", Net_SpoofLevel, Main_Network, "Applied spoofed rank");
 }
 #pragma endregion
 
@@ -468,20 +468,18 @@ void Main_ScriptLoader()
 {
     SetHeader("Script Loader");
     AddScrollableIntItem("Script", Script_Run, Main, "", &script_index, 1, 10);
-    AddItem("How to use", Script_HowTo, Main, "");
 }
 #pragma endregion
 
 void Main()
 {
-    SetHeader("== <ROCKSTAR> Fuhzbots Menu ==");
+    SetHeader("== <ROCKSTAR> RDR Trainer ==");
     AddSubmenu("Self Options",    Main_Self,         nullptr);
     AddSubmenu("Weapon Options",  Main_Weapons,      nullptr);
     AddSubmenu("World Options",   Main_World,        nullptr);
     AddSubmenu("Teleporter",      Main_Teleporter,   nullptr);
     AddSubmenu("Vehicle Spawner", Main_Vehicles,     nullptr);
     AddSubmenu("Animal Spawner",  Main_Animals,      nullptr);
-    AddSubmenu("Object Spawner",  nullptr,           nullptr);
     AddSubmenu("Network Options", Main_Network,      nullptr);
     AddSubmenu("Test Options",    Main_Test,         nullptr);
     AddSubmenu("Script Loader",   Main_ScriptLoader, nullptr);
