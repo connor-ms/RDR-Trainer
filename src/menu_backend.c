@@ -246,7 +246,7 @@ void DrawMenu()
     straddi_s(menu_text, current_submenu_count - 1);
     stradd_s(menu_text, ") ==");
 
-    _PRINT_HELP(menu_text, 1, true, 2, 1, 0, 0, 0);
+    _PRINT_HELP(menu_text, 1, false, 2, 1, 0, 0, 0);
 
     current_submenu_count = 1;
     memset(menu_text, 0, sizeof(menu_text));
