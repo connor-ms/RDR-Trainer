@@ -3135,6 +3135,7 @@ extern _native int SET_CAMERA_FOLLOW_ACTOR(Actor actor)l
 extern _native int ADD_SCRIPT_USE_CONTEXT(const char *context, int, eButton b, int, int, int, int, int, int)l
 extern _native Object GET_OBJECT_FROM_ACTOR(Actor actor)l
 extern _native Blip GET_BLIP_ON_ACTOR(Actor actor)l
+extern _native const char *GET_LOCAL_PLAYER_NAME(int)l
 
 /******************** Undocumented Natives ********************
 ACTOR_HAS_ANIM_LOADED
@@ -3375,7 +3376,6 @@ GET_ACTOR_ENUM_FACTION
 GET_ACTOR_DRAFTED_TO
 RELEASE_PERS_CHAR
 SET_ACTOR_TO_SEAT
-GET_LOCAL_PLAYER_NAME
 GET_SYSTEM_TIME
 GET_LAST_HIT_FLAGS
 GET_LAST_HIT_WEAPON

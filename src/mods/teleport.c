@@ -9,27 +9,27 @@ void Teleport_Locations()
 
     switch (teleport_location)
     {
-    case 0: // agave viejo
+    case 0: // Agave Viejo
         loc.x = -1545.03f;
         loc.y = 15.03f;
         loc.z = 3913.46f;
         break;
-    case 1: // armadillo
+    case 1: // Armadillo
         loc.x = -2175.62f;
         loc.y = 16.31f;
         loc.z = 2613.50f;
         break;
-    case 2: // beechers hope
+    case 2: // Beecher's Hope
         loc.x = -83.45f;
         loc.y = 117.68f;
         loc.z = 1374.10f;
         break;
-    case 3: // benedict point
+    case 3: // Benedict Point
         loc.x = -3686.96f;
         loc.y = 8.62f;
         loc.z = 3493.24f;
         break;
-    case 4: // blackwater
+    case 4: // Blackwater
         loc.x = 711.18f;
         loc.y = 78.31f;
         loc.z = 1252.763f;
@@ -156,7 +156,7 @@ void Teleport_Locations()
         break;
     }
 
-    TELEPORT_ACTOR(self, &loc, 1, 1, 1);
+    TELEPORT_ACTOR(self, &loc, true, true, true);
 }
 
 void Teleport_Direction()
@@ -189,5 +189,5 @@ void Teleport_Direction()
         break;
     }
 
-    TELEPORT_ACTOR_WITH_HEADING(self, loc, heading, 1, 1, 1);
+    TELEPORT_ACTOR_WITH_HEADING(self, loc, heading, true, true, true);
 }

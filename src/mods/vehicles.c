@@ -13,8 +13,10 @@ void Vehicles_Spawn()
 
     STREAMING_REQUEST_ACTOR(vehicle, true, false);
     
-    while (!STREAMING_IS_ACTOR_LOADED(vehicle, -1)) 
+    while (!STREAMING_IS_ACTOR_LOADED(vehicle, -1))
+    {
         WAIT(0);
+    }
 
     GET_POSITION(self, &pos);
 
@@ -32,5 +34,4 @@ void Vehicles_Spawn()
 
     START_VEHICLE(actor);
     SET_VEHICLE_ENGINE_RUNNING(actor, true);
-    
 }

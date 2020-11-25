@@ -12,28 +12,7 @@
 
 void main()
 {
-    LAUNCH_NEW_SCRIPT("scripting/DesignerDefined/UI/FuiEventMonitor_o", 1);
-
-    while (HUD_IS_FADED())
-    {
-        if (IsButtonDown(BUTTON_B))
-        {
-            UI_EXIT("LoadingScreenTexture");
-            UI_EXIT("LoadingScreen");
-            UI_EXIT("MPSplash");
-            UI_ACTIVATE("HudSceneLayer");
-            UI_SHOW("HudSceneLayer");
-            UI_ENTER("HudSceneLayer");
-            UI_ACTIVATE("HudSceneOnline");
-            UI_SHOW("HudSceneOnline");
-            UI_ENTER("HudSceneOnline");
-
-            UI_SEND_EVENT("net.worldLoaded");
-            UI_SEND_EVENT("loadComplete");
-        }
-
-        WAIT(0);
-    }
+    Script_RunByPath("scripting/DesignerDefined/UI/FuiEventMonitor_o");
 
     char welcome_msg[200];
 
@@ -47,7 +26,7 @@ void main()
     net_player_names[16] = null;
 
     stradd_s(welcome_msg, "<blue>Welcome, <red>");
-    stradd_s(welcome_msg, GET_SLOT_NAME(GET_LOCAL_SLOT()));
+    stradd_s(welcome_msg, GET_LOCAL_PLAYER_NAME(0));
     stradd_s(welcome_msg, "<blue>. Menu made by <purple>Fuhzbot<blue>.</blue> \n Press <lt> + <y> to open.\n");
 
     PRINT_BIG(welcome_msg, 4, 1, 0, 0);

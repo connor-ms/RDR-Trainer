@@ -5,12 +5,8 @@
 
 char *net_player_names[17];
 int   net_selected_player = 1;
-int   net_spoof_prestige  = 0;
-int   net_spoof_level     = 1;
 
 bool spectating = false;
-
-// tp to posse leader: UI_SENDEVENT(RequestPosseTeleport)
 
 bool IsSlotValid(int slot)
 {
@@ -27,7 +23,7 @@ bool IsSlotValid(int slot)
     }
 }
 
-const char *GetSlotColor(int slot)
+const char *GetColoredSlotName(int slot)
 {
     char temp[23] = "MPPlayerNameColored_";
     
@@ -50,15 +46,16 @@ void Net_FixServer()
 
     stradd_s(temp, "Found ");
     straddi_s(temp, matches);
-    stradd_s(temp, " matches.\nDeleting...");
+    stradd_s(temp, " matches.");
 
-    print(temp, 2000);
+    _PRINT_CHAT(temp, 0, 0, 0, 0, 0, 0);
+    _PRINT_CHAT("Deleting...", 0, 0, 0, 0, 0, 0);
 
     for (int i = 0; i < matches; i++)
     {
         int current = OBJECT_ITERATOR_CURRENT(iterator);
 
-        if (current != self)
+        if (current != self && !IS_ACTOR_PLAYER(current))
         {
             DESTROY_ACTOR(current);
         }
@@ -93,6 +90,7 @@ void Net_TeleportToPlayer()
     TELEPORT_ACTOR(self, &pos, true, true, true);
 }
 
+// Doesn't work, might work as host though
 void Net_TPToMe()
 {
     if (!IsSlotValid(net_selected_player))
@@ -105,21 +103,6 @@ void Net_TPToMe()
     NET_REQUEST_OBJECT(player);
 
     SET_OBJECT_POSITION(player, pos);
-}
-
-void Net_ExplodePlayer()
-{
-    if (!IsSlotValid(net_selected_player))
-        return;
-
-    vector3 pos, damage;
-    GET_SLOT_POSITION(net_selected_player, &pos);
-
-    damage.x = 1.0f;
-    damage.y = 1.0f;
-    damage.z = 1.0f;
-
-    _CREATE_EXPLOSION(&pos, EXPLOSION_ExplosionLarge, true, &damage, true);
 }
 
 void Net_SpectatePlayer()
@@ -144,15 +127,6 @@ void Net_SpectatePlayer()
     SET_CAMERA_FOLLOW_ACTOR(GET_SLOT_ACTOR(net_selected_player));
 
     TELEPORT_ACTOR(self, &oldpos, 1, 1, 1);
-    //SET_PLAYER_CONTROL(0, 0, 1, 1);
-}
-
-void Net_KillPlayersHorse()
-{
-    if (!IsSlotValid(net_selected_player))
-        return;
-
-    KILL_ACTOR(GET_ACTORS_HORSE(GET_SLOT_ACTOR(net_selected_player))); // doesn't work
 }
 
 void Net_Loop()
@@ -162,7 +136,7 @@ void Net_Loop()
         char msg[255];
 
         stradd_s(msg, "Spectating ");
-        stradd_s(msg, GetSlotColor(net_selected_player));
+        stradd_s(msg, GetColoredSlotName(net_selected_player));
         stradd_s(msg, "</0x> \nPress <cancel> to stop spectating.");
 
         print(msg, 200);
@@ -173,9 +147,4 @@ void Net_Loop()
             spectating = false;
         }
     }
-}
-
-void Net_SpoofLevel()
-{
-    UNK_0x50C18480("Rank", (net_spoof_prestige * 50) + net_spoof_level);
 }

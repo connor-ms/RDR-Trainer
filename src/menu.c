@@ -288,43 +288,17 @@ void Network_ShowSlot(int slot)
 
     net_selected_player = slot;
 
-    AddItem("Teleport to",    Net_TeleportToPlayer, Main_Network, "");
-    AddItem("Teleport to me", Net_TPToMe,           Main_Network, "");
-    AddItem("Explode",        Net_ExplodePlayer,    Main_Network, "Exploded player");
+    AddItem("Teleport to",    Net_TeleportToPlayer, Main_Network, "Teleported to player");
     AddItem("Spectate",       Net_SpectatePlayer,   Main_Network, "Spectating player");
-    AddItem("Kill Horse",     Net_KillPlayersHorse, Main_Network, "Killed horse");
-}
-
-void Network_LevelSpoofer()
-{
-    SetHeader("== Level Spoofer ==");
-
-    AddScrollableIntItem("Prestige", nullptr, Main_Network, "", &net_spoof_prestige, 0, 4);
-    AddScrollableIntItem("Level",    nullptr, Main_Network, "", &net_spoof_level,    1, 50);
-
-    AddItem("Apply", Net_SpoofLevel, Main_Network, "Applied spoofed rank");
 }
 #pragma endregion
 
 #pragma region Main
-void Main_Test()
-{
-    SetHeader("Test Options");
-
-    AddItem("Test1", Test_1, Main, "Test1");
-    AddItem("Test2", Test_2, Main, "Test2");
-    AddItem("Test3", Test_3, Main, "Test3");
-    AddItem("Test4", Test_4, Main, "Test4");
-    AddItem("Test5", Test_5, Main, "Test5");
-    AddItem("Test6", Test_6, Main, "Test6");
-}
-
 void Main_Self()
 {
     SetHeader("== Self Options ==");
 
     AddBoolItem("Invincible",  Self_ToggleInvincible,   Main, "Toggled invincibility", self_invincible);
-    AddBoolItem("Invisible",   Self_ToggleInvisible,    Main, "Toggled invisibility", self_invisible);
     AddBoolItem("Noclip",      Self_ToggleNoclip,       Main, "Toggled noclip", self_noclip);
     AddBoolItem("Drunk",       Self_ToggleDrunk,        Main, "Toggled drunk", self_drunk);
 }
@@ -342,35 +316,35 @@ void Main_World()
 {
     SetHeader("== World Options ==");
 
-    AddScrollableItem("Set Weather", weather, World_SetWeather, Main, "", &world_weather);
+    AddScrollableItem("Set Weather", weather, World_SetWeather, Main, "Changed weather", &world_weather);
 }
 
 void Main_Teleporter()
 {
     SetHeader("== Teleporter ==");
     
-    AddScrollableItem("Teleport to",  teleport_locations, Teleport_Locations, Main, "", &teleport_location);
-    AddScrollableItem("Teleport 2ft", teleport_direction, Teleport_Direction, Main, "", &teleport_dir);
+    AddScrollableItem("Teleport to",  teleport_locations, Teleport_Locations, Main, "Teleported", &teleport_location);
+    AddScrollableItem("Teleport 2ft", teleport_direction, Teleport_Direction, Main, "Teleported", &teleport_dir);
 }
 
 void Main_Vehicles()
 {
     SetHeader("== Vehicle Options ==");
 
-    AddScrollableItem("Spawn", vehicles, Vehicles_Spawn, Main, "", &vehicles_spawn);
+    AddScrollableItem("Spawn", vehicles, Vehicles_Spawn, Main, "Spawned vehicle", &vehicles_spawn);
 }
 
 void Main_Animals()
 {
     SetHeader("== Animal Spawner ==");
 
-    AddScrollableItem("Animal", animals, nullptr,         Main, "", &animals_index);
-    AddBoolItem("Invincible",   Animals_ToggleInvincible, Main, "", animals_invincible);
-    AddBoolItem("Rideable",     Animals_ToggleRideable,   Main, "", animals_rideable);
-    AddBoolItem("Bodyguard",    Animals_ToggleBodyguard,  Main, "", animals_bodyguard);
-    AddBoolItem("Auto ride",    Animals_ToggleRideLoop,   Main, "", animals_rideloop);
+    AddScrollableItem("Animal", animals, nullptr, Main, "", &animals_index);
 
-    AddItem("Spawn Animal", Animals_Spawn, Main, "");
+    AddSimpleBoolItem("Invincible", Main, "Toggled animal invincibility", &animals_invincible);
+    AddSimpleBoolItem("Rideable",   Main, "Toggled animal rideability",   &animals_rideable);
+    AddSimpleBoolItem("Bodyguard",  Main, "Toggled animal bodyguard",     &animals_bodyguard);
+
+    AddItem("Spawn Animal", Animals_Spawn, Main, "Spawned animal");
 }
 
 void Main_Network()
@@ -385,9 +359,7 @@ void Main_Network()
 
     AddItem("Fix Server", Net_FixServer, Main, "Fixing server...");
 
-    //AddScrollableItem("Players", net_player_names, nullptr, Main, &temp);
-    AddSubmenu("Level Spoofer",   Network_LevelSpoofer,  Main);
-    AddItem("Refresh playerlist", Net_RefreshPlayerlist, Main, "");
+    AddItem("Refresh playerlist", Net_RefreshPlayerlist, Main, "Refreshed playerlist");
 
     for (int i = 0; i < 16; i++)
     {
@@ -398,65 +370,57 @@ void Main_Network()
 
         char name[100];
 
-        stradd_s(name, GetSlotColor(i));
-
-        /*if (i == GET_LOCAL_SLOT())
-        {
-            stradd_s(name, " <green>(YOU)<grey>");
-        }
-
-        if (GET_ACTOR_INVULNERABILITY(GET_SLOT_ACTOR(i)))
-            stradd_s(name, " <red>(invincible)<grey> ");*/
+        stradd_s(name, GetColoredSlotName(i));
 
         switch (i)
         {
         case 0:
-            AddSubmenu(name, Net_Slot1, Main);
+            AddSubmenu(name, Net_Slot0, Main);
             break;
         case 1:
-            AddSubmenu(name, Net_Slot2, Main);
+            AddSubmenu(name, Net_Slot1, Main);
             break;
         case 2:
-            AddSubmenu(name, Net_Slot3, Main);
+            AddSubmenu(name, Net_Slot2, Main);
             break;
         case 3:
-            AddSubmenu(name, Net_Slot4, Main);
+            AddSubmenu(name, Net_Slot3, Main);
             break;
         case 4:
-            AddSubmenu(name, Net_Slot5, Main);
+            AddSubmenu(name, Net_Slot4, Main);
             break;
         case 5:
-            AddSubmenu(name, Net_Slot6, Main);
+            AddSubmenu(name, Net_Slot5, Main);
             break;
         case 6:
-            AddSubmenu(name, Net_Slot7, Main);
+            AddSubmenu(name, Net_Slot6, Main);
             break;
         case 7:
-            AddSubmenu(name, Net_Slot8, Main);
+            AddSubmenu(name, Net_Slot7, Main);
             break;
         case 8:
-            AddSubmenu(name, Net_Slot9, Main);
+            AddSubmenu(name, Net_Slot8, Main);
             break;
         case 9:
-            AddSubmenu(name, Net_Slot10, Main);
+            AddSubmenu(name, Net_Slot9, Main);
             break;
         case 10:
-            AddSubmenu(name, Net_Slot11, Main);
+            AddSubmenu(name, Net_Slot10, Main);
             break;
         case 11:
-            AddSubmenu(name, Net_Slot12, Main);
+            AddSubmenu(name, Net_Slot11, Main);
             break;
         case 12:
-            AddSubmenu(name, Net_Slot13, Main);
+            AddSubmenu(name, Net_Slot12, Main);
             break;
         case 13:
-            AddSubmenu(name, Net_Slot14, Main);
+            AddSubmenu(name, Net_Slot13, Main);
             break;
         case 14:
-            AddSubmenu(name, Net_Slot15, Main);
+            AddSubmenu(name, Net_Slot14, Main);
             break;
         case 15:
-            AddSubmenu(name, Net_Slot16, Main);
+            AddSubmenu(name, Net_Slot15, Main);
             break;
         }
 
@@ -467,7 +431,7 @@ void Main_Network()
 void Main_ScriptLoader()
 {
     SetHeader("Script Loader");
-    AddScrollableIntItem("Script", Script_Run, Main, "", &script_index, 1, 10);
+    AddScrollableIntItem("Script", Script_Run, Main, "Attempting to run script...", &script_index, 1, 10);
 }
 #pragma endregion
 
@@ -481,6 +445,5 @@ void Main()
     AddSubmenu("Vehicle Spawner", Main_Vehicles,     nullptr);
     AddSubmenu("Animal Spawner",  Main_Animals,      nullptr);
     AddSubmenu("Network Options", Main_Network,      nullptr);
-    AddSubmenu("Test Options",    Main_Test,         nullptr);
     AddSubmenu("Script Loader",   Main_ScriptLoader, nullptr);
 }

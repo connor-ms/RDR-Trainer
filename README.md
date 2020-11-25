@@ -7,10 +7,9 @@ A simple script trainer for Red Dead Redemption. Meant to be a base to build off
 For the latest download, navigate to the releases tab, or click [here](https://github.com/connorms/RDR-Trainer/releases).
 
 ## Features
-It's not a very feature-filled menu, because it's only meant to be a starting point to be built off of. Here's the list of current features though that are already included:
+This is mainly meant to be used as a starting point, so just a few features are included to get an idea of how the menu works. Here are the features that are already included to get started from:
   - Self options
     - Invincible
-    - Invisible (server-side only)
     - Noclip
     - Drunk
   - Weapon Options
@@ -29,18 +28,13 @@ It's not a very feature-filled menu, because it's only meant to be a starting po
       - Invincible
       - Rideable
       - Bodyguard
-      - Auto Ride
     - Spawn Animal
   - Network Options
     - Fix Server
-    - Level Spoofer
     - Refresh Playerlist
     - Player Options
       - Teleport to
-      - Teleport to me (experimental)
-      - Explode
       - Spectate
-      - Kill Horse (not working)
   - Script Loader
     - Load Script
 

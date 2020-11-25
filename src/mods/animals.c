@@ -5,7 +5,6 @@ bool animals_invincible = false;
 bool animals_rideable   = false;
 bool animals_bodyguard  = false;
 bool animals_ismount    = false;
-bool animals_rideloop   = false;
 
 Actor last_spawned;
 
@@ -13,7 +12,6 @@ void Animals_ToggleInvincible() { ToggleBool(animals_invincible); }
 void Animals_ToggleRideable()   { ToggleBool(animals_rideable);   }
 void Animals_ToggleBodyguard()  { ToggleBool(animals_bodyguard);  }
 void Animals_ToggleMount()      { ToggleBool(animals_ismount);    }
-void Animals_ToggleRideLoop()   { ToggleBool(animals_rideloop);   }
 
 void Animals_Spawn()
 {
@@ -24,12 +22,7 @@ void Animals_Spawn()
     rot.y = 0;
     rot.z = 0;
 
-    char name[10];
-
-    stradd_s(name, "a");
-    straddi_s(name, RAND_INT_RANGE(0, 100));
-
-    last_spawned = CREATE_ACTOR_IN_LAYOUT(GET_AMBIENT_LAYOUT(), name, animals_index + 976, pos, rot);
+    last_spawned = CREATE_ACTOR_IN_LAYOUT(GET_AMBIENT_LAYOUT(), "", animals_index + 976, pos, rot);
 
     SET_ACTOR_INVULNERABILITY(last_spawned, animals_invincible);
 
@@ -47,15 +40,5 @@ void Animals_Spawn()
         SET_ACTORS_HORSE(self, last_spawned);
     }
 
-    if (animals_rideloop)
-    {
-        ACTOR_MOUNT_ACTOR(self, last_spawned);
-    }
-
     RELEASE_ACTOR(last_spawned);
-}
-
-void Animals_Loop()
-{
-    
 }

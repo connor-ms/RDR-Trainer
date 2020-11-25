@@ -132,11 +132,6 @@ bool AddBaseItem(char *str, void *func, void *backfunc, const char *msg, bool su
     return true;
 }
 
-void AddText(char *str)
-{
-    // todo
-}
-
 void AddItem(char *str, void *func, void *backfunc, const char *msg)
 {
     AddBaseItem(str, func, backfunc, msg, false);
@@ -251,9 +246,7 @@ void DrawMenu()
     straddi_s(menu_text, current_submenu_count - 1);
     stradd_s(menu_text, ") ==");
 
-    //UNK_0xFD355ED1(menu_text, 15);
     _PRINT_HELP(menu_text, 1, true, 2, 1, 0, 0, 0);
-    //PRINT_BIG(menu_text, 1, 1, 0, 0);
 
     current_submenu_count = 1;
     memset(menu_text, 0, sizeof(menu_text));
