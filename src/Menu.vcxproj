@@ -134,11 +134,9 @@
     <ClCompile Include="mods\scriptloader.c" />
     <ClCompile Include="mods\self.c" />
     <ClCompile Include="mods\teleport.c" />
-    <ClCompile Include="mods\test.c" />
     <ClCompile Include="mods\vehicles.c" />
     <ClCompile Include="mods\weapon.c" />
     <ClCompile Include="mods\world.c" />
-    <ClCompile Include="notes.c" />
     <ClCompile Include="util.c" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

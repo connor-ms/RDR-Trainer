@@ -79,9 +79,6 @@
     <ClCompile Include="menu.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="notes.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="mods\animals.c">
       <Filter>Source Files\mods</Filter>
     </ClCompile>
@@ -107,9 +104,6 @@
       <Filter>Source Files\mods</Filter>
     </ClCompile>
     <ClCompile Include="mods\world.c">
-      <Filter>Source Files\mods</Filter>
-    </ClCompile>
-    <ClCompile Include="mods\test.c">
       <Filter>Source Files\mods</Filter>
     </ClCompile>
     <ClCompile Include="..\include\common.c">
