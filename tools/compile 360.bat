@@ -17,7 +17,6 @@ cls
 if exist "../lib/SC-CL/bin/SC-CL.exe" (
     "../lib/SC-CL/bin/SC-CL.exe" -platform=X360 -target="RDR_#SC" -out-dir="../bin/" -vcx="../src/Menu.vcxproj" -name="menu" -- -I "../include/"
 ) else (
-) else (
     echo Error: SC-CL not found! Make sure to include submodules when cloning.
     echo        You can do this by going to the root folder and running the following 2 commands:
     echo          - git submodule init
