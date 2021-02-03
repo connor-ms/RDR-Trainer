@@ -25,7 +25,7 @@ void Vehicles_Spawn()
     stradd_s(name, "vehicle");
     straddi_s(name, vehicles_spawn);
 
-    Actor actor = CREATE_ACTOR_IN_LAYOUT(GET_AMBIENT_LAYOUT(), name, vehicle, pos, rotation);
+    Actor actor = CREATE_ACTOR_IN_LAYOUT(FIND_NAMED_LAYOUT("PlayerLayout"), name, vehicle, pos, rotation);
 
     SET_VEHICLE_ALLOWED_TO_DRIVE(actor, true);
     ENABLE_VEHICLE_SEAT(actor, 0, true);
